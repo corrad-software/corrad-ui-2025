@@ -7,7 +7,8 @@ const props = defineProps({
   position: {
     type: String,
     default: "bottom-right",
-    validator: (value) => ["top-left", "top-right", "bottom-left", "bottom-right"].includes(value),
+    validator: (value) =>
+      ["top-left", "top-right", "bottom-left", "bottom-right"].includes(value),
   },
 });
 
@@ -20,22 +21,25 @@ const positionClasses = {
 
 // Compute animation classes based on position
 const getAnimationClasses = (position) => {
-  const isTop = position.startsWith('top');
+  const isTop = position.startsWith("top");
   return {
     enter: {
-      active: 'transition ease-out duration-300',
-      from: `opacity-0 ${isTop ? '-translate-y-2' : 'translate-y-2'}`,
-      to: 'opacity-100 translate-y-0'
+      active: "transition ease-out duration-300",
+      from: `opacity-0 ${isTop ? "-translate-y-2" : "translate-y-2"}`,
+      to: "opacity-100 translate-y-0",
     },
     leave: {
-      active: 'transition ease-in duration-200',
-      from: 'opacity-100 translate-y-0',
-      to: `opacity-0 ${isTop ? '-translate-y-2' : 'translate-y-2'}`
-    }
+      active: "transition ease-in duration-200",
+      from: "opacity-100 translate-y-0",
+      to: `opacity-0 ${isTop ? "-translate-y-2" : "translate-y-2"}`,
+    },
   };
 };
 
 const animations = computed(() => getAnimationClasses(props.position));
+
+// Compute whether there are active toasts
+const hasActiveToasts = computed(() => toasts[props.position].value.length > 0);
 </script>
 
 <template>
@@ -45,8 +49,9 @@ const animations = computed(() => getAnimationClasses(props.position));
       positionClasses[position],
       {
         'flex-col': position.startsWith('top'),
-        'flex-col-reverse': position.startsWith('bottom')
-      }
+        'flex-col-reverse': position.startsWith('bottom'),
+        'pointer-events-none': !hasActiveToasts,
+      },
     ]"
   >
     <TransitionGroup

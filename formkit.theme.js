@@ -1,8 +1,11 @@
 // Base classifications for common styles
 const baseStyles = {
-  label: "block text-sm font-medium text-foreground mb-2",
+  label:
+    "block text-sm font-medium text-foreground mb-2 disabled:opacity-50 disabled:cursor-not-allowed",
   message: "text-sm text-danger mt-1",
-  inner: "relative",
+  asterisk: "text-danger",
+  inner:
+    "relative flex items-center gap-2 border border-border rounded-md bg-background text-sm text-foreground ring-offset-background placeholder:text-muted-foreground focus-within:border-foreground focus-within:ring-1 focus-within:ring-foreground focus:outline-0 focus:outline-transparent focus:border-primary focus:ring-0 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50 shadow rounded-[var(--radius)]",
 };
 
 // Input group classifications
@@ -12,17 +15,16 @@ const inputClassifications = {
     ...baseStyles,
     outer: "relative",
     input: `
-      flex h-10 w-full rounded-md 
-      border border-border 
-      bg-background px-3 py-2 text-sm 
+      flex w-full
+      border-none
+      focus:border-none
+      focus:ring-0
+      focus:ring-transparent
+      focus:outline-none
+      bg-background text-sm
       text-foreground
-      ring-offset-background 
-      placeholder:text-muted-foreground 
-      focus:outline-0	focus:outline-transparent
-      focus:border-primary
-      focus:ring-0 focus:ring-ring
-      disabled:cursor-not-allowed disabled:opacity-50 shadow
-      rounded-[var(--radius)]
+      disabled:cursor-not-allowed disabled:opacity-50
+      read-only:cursor-not-allowed read-only:opacity-50
     `
       .replace(/\s+/g, " ")
       .trim(),
@@ -35,10 +37,13 @@ const inputClassifications = {
   box: {
     inner: "relative flex items-start",
     fieldset: "border-0 p-0 m-0",
-    legend: "text-sm font-medium text-foreground mb-4",
-    wrapper: "flex items-center h-4 mb-2",
+    legend:
+      "text-sm font-medium text-foreground mb-4 disabled:opacity-50 disabled:cursor-not-allowed",
+    wrapper:
+      "flex items-center h-4 mb-2 disabled:opacity-50 disabled:cursor-not-allowed",
     help: "text-sm text-muted-foreground",
-    label: "ml-2 text-sm font-medium text-foreground cursor-pointer",
+    label:
+      "ml-2 text-sm font-normal text-foreground cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed",
     message: "text-sm text-danger mt-1",
   },
 
@@ -53,7 +58,7 @@ const inputClassifications = {
       focus-visible:ring-ring focus-visible:ring-offset-0 
       disabled:pointer-events-none disabled:opacity-50 
       bg-primary text-primary-foreground 
-      hover:bg-primary/90 h-10 px-4 py-2
+      hover:bg-primary/90 px-4 py-2
     `
       .replace(/\s+/g, " ")
       .trim(),
@@ -63,7 +68,7 @@ const inputClassifications = {
     ...baseStyles,
     inner: "flex gap-2",
     digit: `
-      flex h-10 w-10 
+      flex  w-10 
       rounded-[var(--radius)]
       border border-border 
       bg-background text-center text-sm 
@@ -78,15 +83,17 @@ const inputClassifications = {
   },
 
   color: {
-    label: "block mb-1 font-bold text-sm",
+    label:
+      "block mb-1 font-bold text-sm disabled:opacity-50 disabled:cursor-not-allowed",
     input:
-      "w-16 h-10 cursor-pointer rounded-[var(--radius)] mb-2 border-none appearance-none bg-transparent",
+      "w-16  cursor-pointer rounded-[var(--radius)] mb-2 border-none appearance-none bg-transparent",
   },
 
   file: {
     ...baseStyles,
+    inner: "flex flex-col",
     input: `
-      flex h-10 w-full 
+      flex h-9 w-full 
       rounded-[var(--radius)]
       border border-border 
       bg-background text-sm 
@@ -111,6 +118,10 @@ const inputClassifications = {
     `
       .replace(/\s+/g, " ")
       .trim(),
+    fileList: "flex flex-col gap-1 mt-1",
+    fileItem: "p-1 border-b border-border rounded-md",
+    fileRemove: "flex text-danger mt-1",
+    noFiles: "text-muted-foreground text-sm",
   },
 
   range: {
@@ -192,7 +203,8 @@ const inputClassifications = {
     `
       .replace(/\s+/g, " ")
       .trim(),
-    label: "text-sm font-medium text-foreground",
+    label:
+      "text-sm font-medium text-foreground disabled:opacity-50 disabled:cursor-not-allowed",
     message: "text-sm text-danger mt-1",
   },
 
@@ -201,7 +213,7 @@ const inputClassifications = {
     ...baseStyles,
     outer: "relative",
     input: `
-      h-10 w-full rounded-md 
+      w-full rounded-md 
       border border-border 
       bg-background px-3 py-2 text-sm 
       text-foreground
@@ -221,9 +233,10 @@ const inputClassifications = {
 
   combobox: {
     ...baseStyles,
+    inner: "relative",
     outer: "relative",
     input: `
-      group flex min-h-10 w-full flex-wrap items-center gap-1.5 
+      group flex min- w-full flex-wrap items-center gap-1.5 
       rounded-md border border-border bg-background px-2
       text-sm ring-offset-background 
       focus-within:ring-1 focus-within:ring-ring focus-within:ring-offset-0 shadow
@@ -277,7 +290,8 @@ const inputClassifications = {
 
 // Global styles that apply to all inputs
 const globalStyles = {
-  label: "block text-sm font-medium text-foreground",
+  label:
+    "block text-sm font-medium text-foreground disabled:opacity-50 disabled:cursor-not-allowed",
   outer: "mb-4",
   help: "text-sm text-muted-foreground mt-1",
   messages: "list-none p-0 mt-1 mb-2",
@@ -328,12 +342,12 @@ export default {
   checkbox: {
     ...inputClassifications.box,
     input:
-      "h-4 w-4 rounded-[calc(var(--radius)-2px)] border-border bg-background cursor-pointer checked:bg-primary focus:ring-1 focus:ring-offset-0 focus:ring-primary focus:checked:bg-primary hover:bg-transparent hover:checked:bg-primary",
+      "h-4 w-4 rounded-[calc(var(--radius)-2px)] border-border bg-background cursor-pointer checked:bg-primary focus:ring-1 focus:ring-offset-0 focus:ring-primary focus:checked:bg-primary hover:bg-transparent hover:checked:bg-primary disabled:cursor-not-allowed disabled:opacity-50",
   },
   radio: {
     ...inputClassifications.box,
     input:
-      "h-4 w-4 rounded-full border-border bg-background cursor-pointer checked:bg-primary focus:ring-1 focus:ring-offset-0 focus:ring-primary focus:checked:bg-primary hover:bg-transparent hover:checked:bg-primary",
+      "h-4 w-4 rounded-full border-border bg-background cursor-pointer checked:bg-primary focus:ring-1 focus:ring-offset-0 focus:ring-primary focus:checked:bg-primary hover:bg-transparent hover:checked:bg-primary disabled:cursor-not-allowed disabled:opacity-50",
   },
 
   // Special inputs

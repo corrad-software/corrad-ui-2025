@@ -333,7 +333,7 @@ const dropdownPosition = computed(() => {
                             ? 'lucide:chevron-left'
                             : 'lucide:chevron-right'
                         "
-                        class="w-4 h-4 shrink-0 transition-transform duration-300"
+                        class="w-4 h-4 shrink-0 transition-transform duration-300 ease-in-out"
                         :class="[
                           { 'ml-auto': !isRTL, 'mr-auto': isRTL },
                           expandedItems.has(item.name) ? 'rotate-90' : ''
@@ -372,7 +372,7 @@ const dropdownPosition = computed(() => {
                                 <span>{{ child.name }}</span>
                                 <Icon
                                   :name="'lucide:chevron-right'"
-                                  class="w-4 h-4 shrink-0 opacity-50 group-hover:opacity-100 transition-transform duration-300"
+                                  class="w-4 h-4 shrink-0 opacity-50 group-hover:opacity-100 transition-transform duration-300 ease-in-out"
                                   :class="expandedItems.has(child.name) ? 'rotate-90' : ''"
                                 />
                               </button>

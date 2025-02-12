@@ -6,7 +6,7 @@
       "items": [
         {
           "name": "Home",
-          "icon": "lucide:home",
+          "icon": "ph:house",
           "path": "/admin"
         }
       ]
@@ -16,9 +16,15 @@
       "title": "Components",
       "items": [
         {
+          "name": "Actions",
+          "icon": "ph:cursor-click",
+          "children": [{ "name": "Button", "path": "/admin/component/button" }]
+        },
+        {
           "name": "Data Display",
-          "icon": "lucide:layout-panel-left",
+          "icon": "ph:squares-four",
           "children": [
+            { "name": "Accordion", "path": "/admin/component/accordion" },
             { "name": "Avatar", "path": "/admin/component/avatar" },
             { "name": "Badge", "path": "/admin/component/badge" },
             { "name": "Card", "path": "/admin/component/card" },
@@ -30,7 +36,7 @@
         },
         {
           "name": "Feedback",
-          "icon": "lucide:bell",
+          "icon": "ph:bell",
           "children": [
             { "name": "Alert", "path": "/admin/component/alert" },
             { "name": "Toast", "path": "/admin/component/toast" }
@@ -38,7 +44,7 @@
         },
         {
           "name": "Navigation",
-          "icon": "lucide:navigation",
+          "icon": "ph:navigation-arrow",
           "children": [
             { "name": "Breadcrumb", "path": "/admin/component/breadcrumb" },
             { "name": "Stepper", "path": "/admin/component/stepper" },
@@ -47,7 +53,7 @@
         },
         {
           "name": "Overlay",
-          "icon": "lucide:layers",
+          "icon": "ph:stack",
           "children": [
             { "name": "Context Menu", "path": "/admin/component/context-menu" },
             { "name": "Dropdown", "path": "/admin/component/dropdown" },
@@ -59,7 +65,7 @@
         },
         {
           "name": "Layout",
-          "icon": "lucide:layout",
+          "icon": "ph:layout",
           "children": [
             { "name": "Carousel", "path": "/admin/component/carousel" },
             { "name": "Scroll Area", "path": "/admin/component/scroll-area" }
@@ -67,8 +73,56 @@
         },
         {
           "name": "Forms",
-          "icon": "lucide:box-select",
-          "children": [{ "name": "Button", "path": "/admin/component/button" }]
+          "icon": "ph:text-columns",
+          "children": [
+            {
+              "name": "Basic Inputs",
+              "children": [
+                { "name": "Text Input", "path": "/admin/form/element/input" },
+                { "name": "Textarea", "path": "/admin/form/element/textarea" },
+                { "name": "Select", "path": "/admin/form/element/select" },
+                { "name": "Radio", "path": "/admin/form/element/radio" },
+                { "name": "Checkbox", "path": "/admin/form/element/checkbox" }
+              ]
+            },
+            {
+              "name": "Advanced Inputs",
+              "children": [
+                { "name": "OTP Input", "path": "/admin/form/element/otp" },
+                {
+                  "name": "Input Mask",
+                  "path": "/admin/form/element/input-mask"
+                },
+                { "name": "Combobox", "path": "/admin/form/element/combobox" },
+                { "name": "Switch", "path": "/admin/form/element/switch" }
+              ]
+            },
+            {
+              "name": "Date & Time",
+              "children": [
+                { "name": "Date Picker", "path": "/admin/form/element/date" },
+                { "name": "Time Picker", "path": "/admin/form/element/time" }
+              ]
+            },
+            {
+              "name": "Rich Inputs",
+              "children": [
+                { "name": "Color Picker", "path": "/admin/form/element/color" },
+                { "name": "File Upload", "path": "/admin/form/element/file" }
+              ]
+            },
+            {
+              "name": "Form Layouts",
+              "children": [
+                {
+                  "name": "Form Section",
+                  "path": "/admin/form/layout/section"
+                },
+                { "name": "Form Grid", "path": "/admin/form/layout/grid" },
+                { "name": "Form Wizard", "path": "/admin/form/layout/wizard" }
+              ]
+            }
+          ]
         }
       ]
     },
@@ -78,7 +132,7 @@
       "items": [
         {
           "name": "Settings",
-          "icon": "lucide:settings",
+          "icon": "ph:gear",
           "children": [
             {
               "name": "Profile",
@@ -89,15 +143,9 @@
               "name": "Appearance",
               "path": "/admin/settings/appearance",
               "icon": "ph:paint-brush"
-            },
-            {
-              "name": "Password",
-              "path": "/admin/settings/password",
-              "icon": "ph:lock"
             }
           ]
         }
-
       ]
     },
     {
@@ -106,7 +154,7 @@
       "items": [
         {
           "name": "Management",
-          "icon": "lucide:folder", 
+          "icon": "ph:folder",
           "children": [
             {
               "name": "Users",
